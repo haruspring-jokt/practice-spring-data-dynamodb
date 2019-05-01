@@ -16,8 +16,4 @@ public @Data class User {
   @DynamoDBAttribute(attributeName = "FirstName")
   private String firstName;
 
-  public String getId() {
-    return id;
-  }
-
 }
