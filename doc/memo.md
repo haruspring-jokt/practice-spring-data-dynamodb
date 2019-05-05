@@ -25,6 +25,7 @@ Spring Data DynamoDBライブラリを使用してDynamoDB localにアクセス�
       - [`UserService.java`と実装クラス](#userservicejava%E3%81%A8%E5%AE%9F%E8%A3%85%E3%82%AF%E3%83%A9%E3%82%B9)
       - [`UserController.java`に REST コントローラを定義](#usercontrollerjava%E3%81%AB-rest-%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%82%92%E5%AE%9A%E7%BE%A9)
     - [確認](#%E7%A2%BA%E8%AA%8D)
+    - [カスタムメソッドの作成](#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AE%E4%BD%9C%E6%88%90)
 
 ## DynamoDB local の Docker イメージの取得、コンテナ起動
 
@@ -73,7 +74,7 @@ Default output format [json]:
 `--endpoint-url` は環境によって変更する。今回は Docker ToolBox を経由して DynamoDB コンテナを使用しているので、以下のようになる。
 
 ```
-PS > aws dynamodb list-tables --endpoint-url http://192.168.99.100:8000/shell/
+PS > aws dynamodb list-tables --endpoint-url http://192.168.99.100:8000/
 ```
 
 ```json
@@ -112,7 +113,7 @@ PS > aws dynamodb put-item --table-name User --item '{ \"Id\" : {\"S\": \"1\"} ,
 put した Item を確認する。
 
 ```
-PS > aws dynamodb scan --table-name User --endpoint-url http://192.168.99.100:8000/shell/
+PS > aws dynamodb scan --table-name User --endpoint-url http://192.168.99.100:8000/
 ```
 
 ```
@@ -340,3 +341,9 @@ http://localhost:8080/api/v1/users/add
 http://localhost:8080/api/v1/users/list
 
 ![](img/2019-05-02-06-08-09.png)
+
+### カスタムメソッドの作成
+
+以下を参考に作成する。
+
+https://github.com/derjust/spring-data-dynamodb/wiki/Custom-repository-implementations
