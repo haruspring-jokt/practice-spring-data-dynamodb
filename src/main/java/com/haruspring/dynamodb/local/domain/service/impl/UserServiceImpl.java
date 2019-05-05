@@ -1,6 +1,7 @@
-package com.haruspring.dynamodb.local.domain.service;
+package com.haruspring.dynamodb.local.domain.service.impl;
 
 import com.haruspring.dynamodb.local.domain.model.User;
+import com.haruspring.dynamodb.local.domain.service.UserService;
 import com.haruspring.dynamodb.local.repository.UserDAO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
